@@ -80,7 +80,23 @@ export const ProjectTable = () => {
         </TableRow>
         {rowExpanded ? (
           <TableRow><td colspan="8">
-          <span>HELLO</span>
+          <div style={{height: 400, display:'flex', flexDirection:'row-reverse'}}>
+          <div style={{borderColor: 'black', borderWidth: 1, height: '100%', width: '20%', backgroundColor:'blue', alignSelf:'flex-end'}}>
+          <span>Tasks Completed</span>
+          <ul>
+            <li>item 1</li>
+            <li>item 2</li>
+            <li>item 3</li>
+            <li>item 4</li>
+            <li>item 5</li>
+            <li>item 6</li>
+          </ul>
+
+          </div>
+          <div style={{height: '100%', width:'80%', backgroundColor:'orange'}}>
+
+          </div>
+         </div>
           </td>
           </TableRow>
         ) : null}
