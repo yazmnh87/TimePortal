@@ -3,6 +3,7 @@ import {GlobalStyle} from './styles/GlobalStyle'
 import {Navbar} from './components/Navbar'
 import {Header} from './components/Header'
 import {ProjectTable} from './components/Table'
+import {Modal} from './components/Modal'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
     <GlobalStyle/>
     <Navbar/>
     <Header />
+    <Modal />
     <ProjectTable/>
     </>
   );
