@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "styled-components";
 import { Data } from "../Data";
 import { ExpandedView } from "./ExpandedView";
+import { useStateValue } from '../context/context'
 
 export const TableContainer = style.div`
 width: 100%;
@@ -43,6 +44,8 @@ export const ProjectTable = () => {
 
   const hourlyRate = 60;
 
+
+
   const mappedProjects = Data.map(project => {
     const {
       projectID,
@@ -54,6 +57,7 @@ export const ProjectTable = () => {
       totalHoursWorkedThisWeek
     } = project;
     return (
+      
       <>
         <TableRow>
           <TableHead>{projectName}</TableHead>

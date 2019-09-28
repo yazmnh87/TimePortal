@@ -1,8 +1,11 @@
 import React from "react";
 import style from "styled-components";
+import { useStateValue } from '../context/context'
+
+
 
 export const ModalContainer = style.div`
-  display: none; 
+  display: ${props => !props.visible ? 'none' : 'block'}; 
   position: fixed; 
   z-index: 1; 
   left: 0;
@@ -22,7 +25,8 @@ border-radius: 5px;
 `;
 
 export const Modal = () => {
-  return <ModalContainer>
+  const [{modalVisible}, dispatch] = useStateValue()
+  return <ModalContainer visible={modalVisible}>
       <ModalContent>
           <div>
               <label>Project Name</label>

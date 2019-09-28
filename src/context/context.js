@@ -1,25 +1,12 @@
-import React from 'react'
+import React, {useContext, createContext, useReducer} from 'react'
 
-const Context = React.createContext()
-
-
-
-const GlobalProvider = (props) => {
+export const StateContext = createContext();
 
 
+export const StateProvider = ({reducer, initialState, children}) => (
+    <StateContext.Provider value={useReducer(reducer, initialState)}>
+        {children}
+    </StateContext.Provider>
+);
 
-    
-    return (
-        <Context.Provider value={{
-            ...props
-        }}>
-    {props.children}
-        </Context.Provider>
-    )
-}
-
-export default function withProvider(C) {
-    return  props => <Context.Consumer>
-        {value => <C {...value}{...props}/>}
-    </Context.Consumer>
-}
+export const useStateValue = () => useContext(StateContext)

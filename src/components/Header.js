@@ -1,5 +1,8 @@
 import React from 'react'
 import style from 'styled-components'
+import { useStateValue } from '../context/context'
+
+
 
 export const HeaderContainer = style.div`
 width: 100%;
@@ -13,8 +16,12 @@ margin-top: 20px;
 `
 
 export const Header = () => {
+    const [{ modalVisible },dispatch] = useStateValue();
+    console.log(modalVisible)
     return <HeaderContainer>
-        <Button style={{marginLeft: 10}}>
+        <Button style={{marginLeft: 10}}  onClick={()=> dispatch({
+            type: 'setModal'
+        })}>
             Create Project
         </Button>
         <h1 style={{marginLeft: 10}}>Projects</h1>
