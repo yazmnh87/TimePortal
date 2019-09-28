@@ -1,9 +1,7 @@
 import React, {useEffect} from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import {GlobalStyle} from './styles/GlobalStyle'
-import {Navbar} from './components/Navbar'
-import {Header} from './components/Header'
-import {ProjectTable} from './components/Table'
-import {Modal} from './components/Modal'
+import Landing from './pages/Landing'
 import {StateProvider} from './context/context'
 
 function App() {
@@ -29,11 +27,10 @@ function App() {
 
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
-    <GlobalStyle/>
-    <Navbar/>
-    <Header />
-    <Modal />
-    <ProjectTable/>
+     <Router>
+    {/* <GlobalStyle/> */}
+    <Route exact path="/" strict component={Landing}/>
+    </Router> 
     </StateProvider>
   );
 }
