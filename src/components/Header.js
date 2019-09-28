@@ -6,6 +6,7 @@ import { useStateValue } from '../context/context'
 
 export const HeaderContainer = style.div`
 width: 100%;
+padding: 100px 0px 0px 0px;
 `
 
 export const Button = style.button`

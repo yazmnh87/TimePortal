@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Login from './pages/Login'
 import Landing from './pages/Landing'
 import {StateProvider} from './context/context'
 
@@ -28,7 +29,8 @@ function App() {
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
      <Router>
-    <Route exact path="/" strict component={Landing}/>
+    <Route exact path="/" strict component={Login}/>
+    <Route exact path="/landing" component={Landing}/>
     </Router> 
     </StateProvider>
   );
