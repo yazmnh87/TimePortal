@@ -29,7 +29,7 @@ const MenuContainer = style.div`
 const MenuItems = style.div`
 display: flex;
 align-self:flex-end;
-width: 200px;
+width: 250px;
 height: 100px;
 border: 1px solid black;
 `
@@ -40,7 +40,8 @@ export const Navbar= () =>{
             </Logo>
             <MenuItems>
             <div style={{alignSelf:'center', marginRight:'2%'}}><a style={{fontSize:22}}>Forms</a></div>
-            <div style={{alignSelf:'center'}}><a style={{fontSize:22}}>Account</a></div>
+            <div style={{alignSelf:'center', marginRight:'2%'}}><a style={{fontSize:22}}>Account</a></div>
+            <div style={{alignSelf:'center'}}><a style={{fontSize:22}}>Support</a></div>
             </MenuItems>
     </NavbarStyled>
 }

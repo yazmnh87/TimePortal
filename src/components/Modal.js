@@ -32,6 +32,7 @@ export const Modal = () => {
               <label>Project Name</label>
               <input />
           </div>
+          <button onClick={()=> dispatch({type: 'setModal'})}>Create</button>
       </ModalContent>
   </ModalContainer>;
 };

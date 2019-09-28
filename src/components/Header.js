@@ -17,7 +17,7 @@ margin-top: 20px;
 
 export const Header = () => {
     const [{ modalVisible },dispatch] = useStateValue();
-    console.log(modalVisible)
+   
     return <HeaderContainer>
         <Button style={{marginLeft: 10}}  onClick={()=> dispatch({
             type: 'setModal'
