@@ -4,13 +4,14 @@ import {Navbar} from '../components/Navbar'
 import {Header} from '../components/Header'
 import {ProjectTable} from '../components/Table'
 import {Modal} from '../components/Modal'
+import { withRouter } from 'react-router-dom'
 
 
-const Landing = () => {
+const Landing = (props) => {
     return (
     <>
     <GlobalStyle/>
-    <Navbar/>
+    <Navbar history={()=> props.history.push('/')}/>
     <Header />
     <Modal />
     <ProjectTable/>
@@ -18,4 +19,4 @@ const Landing = () => {
     )
 }
 
-export default Landing;
+export default withRouter(Landing);
