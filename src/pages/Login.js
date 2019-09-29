@@ -4,6 +4,7 @@ import style from 'styled-components'
 import {scopeUser} from '../utils/scopeUser'
 import { withRouter } from 'react-router-dom'
 import firebase from 'firebase'
+import format from 'date-format'
 
 export const Container = style.div`
 display: flex;
@@ -25,14 +26,20 @@ background-color: #fff;
 
 const Login = (props) => {
 
+
 const [email, setEmail] = useState("")
+const [name, setName] = useState("")
+const [date, setDate] = useState(format(new Date(), 'YYYY-MM-DD'))
 const [password, setPassword] = useState("")
 const [register, setRegister] = useState(false)
 const [error, setError] = useState("")
 
 const logUserData = () => {
    const userInformation = {
-        role: "user"  
+        role: "user",
+        name,
+        date,
+        email: firebase.auth().currentUser.email  
     }
 
     const userRef = scopeUser("userInfo")
@@ -77,6 +84,8 @@ const loginUser = (email, password) => {
         <>
         <label>Email</label>
             <input name="email" value={email} onChange={e => setEmail(e.target.value)}/>
+            <label>Full Name</label>
+            <input name="name" value={name} onChange={e => setName(e.target.value)}/>
             <label>Password</label>
             <input name="password" value={password} onChange={e => setPassword(e.target.value)}/>
         <button onClick={()=> registerUser(email,password)}>Register</button>

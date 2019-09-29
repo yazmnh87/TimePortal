@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import firebase from 'firebase'
 import Login from './pages/Login'
 import Landing from './pages/Landing'
+import Admin from './pages/Admin'
 import {StateProvider} from './context/context'
 
 function App(props) {
@@ -11,7 +12,7 @@ const [authenticated, setAuthenticated] = useState(false)
 
 useEffect(()=> {
   const firebaseConfig = {
-    apiKey: "AIzaSyCREO69IVvy9BT-6dt_dXHS-FTFnBQGxk4",
+    apiKey: `${process.env.REACT_APP_fbKey}`,
     authDomain: "timetracker-8d078.firebaseapp.com",
     databaseURL: "https://timetracker-8d078.firebaseio.com",
     projectId: "timetracker-8d078",
@@ -48,6 +49,7 @@ useEffect(()=> {
      <Router>
     <Route exact path="/" strict component={Login}/>
     <Route exact path="/landing" component={Landing}/>
+    <Route exact path="/admin" component={Admin}/>
     </Router> 
     </StateProvider>
   );
