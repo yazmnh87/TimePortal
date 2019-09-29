@@ -44,10 +44,15 @@ export const Navbar = (props) =>{
                 WildCard Dev
             </Logo>
             <MenuItems>
-            <div style={{alignSelf:'center', marginRight:'2%'}}><a style={{fontSize:22}}>Forms</a></div>
+            {!props.Admin ? <> <div style={{alignSelf:'center', marginRight:'2%'}}><a style={{fontSize:22}}>Forms</a></div>
             <div style={{alignSelf:'center', marginRight:'2%'}}><a style={{fontSize:22}}>Account</a></div>
             <div style={{alignSelf:'center', marginRight:'2%'}}><a style={{fontSize:22}}>Support</a></div>
+            <div style={{alignSelf:'center'}}><button style={{fontSize:22}} onClick={()=> firebase.auth().signOut().then(()=> props.history())}>Sign Out</button></div> </>
+            :
+           <>
             <div style={{alignSelf:'center'}}><button style={{fontSize:22}} onClick={()=> firebase.auth().signOut().then(()=> props.history())}>Sign Out</button></div>
+            </>
+        }
             </MenuItems>
     </NavbarStyled>
 }
