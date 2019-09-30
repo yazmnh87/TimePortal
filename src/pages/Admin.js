@@ -3,7 +3,8 @@ import style from 'styled-components'
 import firebase from '../utils/Firebase'
 import {GlobalStyle} from '../styles/GlobalStyle'
 import {Navbar} from '../components/Navbar'
-import {TableContainer, Table, TableRow, TableHead, TableData} from '../components/Table'
+import {FaAngleDown} from 'react-icons/fa'
+import {TableContainer, TableData} from '../components/Table'
 
 export const Container = style.div`
 height: 100vh;
@@ -18,9 +19,22 @@ height: 50px;
 width: 100vw;
 border: 1px solid black;
 `
+export const Table = style.table`
+border-collapse: collapse;
+`;
 
+export const TableHead = style.th`
+border: 1px solid black;
+padding-right: 15px;
+padding-left: 15px;
+font-size: 14px;
+height: 30px;
+`;
 
-
+export const TableRow = style.tr`
+height: 30px;
+text-align: center;
+`;
 
  const Admin = (props) => {
 
@@ -30,6 +44,7 @@ border: 1px solid black;
     const [password, setPassword] = useState("")
     const [password2, setPassword2] = useState("")
     const [users, setUsers] = useState([])
+    const [showUserInfo, setShowUserInfo] = useState(false)
 
 useEffect(()=>{
     setIsAdminPage(true)
@@ -48,12 +63,18 @@ firebase.database().ref("userInfo").once('value').then(snap => {
 const mappedUsers = users.map((user,i,arr) => {
     
     return Object.values(user).map(user => {
-        return (
+        return <>
             <TableRow>
-                <TableHead>{user.name}</TableHead>
-                <TableHead>{user.email}</TableHead>
+                <TableHead style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}><div><span style={{marginRight:5}}>{user.name}</span></div><FaAngleDown onClick={()=> setShowUserInfo(!showUserInfo)}/></TableHead>
             </TableRow>
-        )
+            {showUserInfo ? 
+            <TableRow>
+                <td colSpan="1"><div style={{borderColor:'black', borderWidth:1}}>Hello</div>
+                </td>
+            </TableRow>
+            : null
+        }
+        </>
     })
 })
 
@@ -78,10 +99,6 @@ const mappedUsers = users.map((user,i,arr) => {
         </ControlContainer>
         <TableContainer>
             <Table style={{ marginLeft: 15, width: "90%" }}>
-                <TableRow>
-                    <TableHead>User</TableHead>
-                    <TableHead>User Email</TableHead>
-                </TableRow>
                 {mappedUsers}
             </Table>
         </TableContainer>
