@@ -63,7 +63,7 @@ const loginUser = (email, password) => {
         setError("Please enter email")
     } else if (password === ""){
         setError("Please enter password")
-    } else firebase.auth().signInWithEmailAndPassword(email, password).then(()=> props.history.push('/landing'))
+    } else firebase.auth().signInWithEmailAndPassword(email, password).then(()=> props.history.push('/admin'))
 }
 
     return (

@@ -20,10 +20,13 @@ useEffect(()=> {
     messagingSenderId: "562993249985",
     appId: "1:562993249985:web:e666763a5a018582"
   };
-
   firebase.initializeApp(firebaseConfig)
 
-
+  firebase.auth().onAuthStateChanged((user)=>{
+    if(user){
+      setAuthenticated(true)
+    }
+  })
 },[])
 
  const initialState = {

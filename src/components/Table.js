@@ -8,6 +8,7 @@ export const TableContainer = style.div`
 width: 100%;
 margin-top: 10px;
 margin-left: 10px;
+top: 250px;
 `;
 export const Table = style.table`
 border: 1px solid black;
