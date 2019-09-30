@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import style from 'styled-components'
-import firebase from 'firebase'
-import {scopeUser} from '../utils/scopeUser'
+import firebase from '../utils/Firebase'
 import {GlobalStyle} from '../styles/GlobalStyle'
 import {Navbar} from '../components/Navbar'
 import {TableContainer, Table, TableRow, TableHead, TableData} from '../components/Table'
@@ -38,22 +37,24 @@ useEffect(()=>{
 },[])
 
 const getUsers = () => {
-const userInfoRef = scopeUser("userInfo")
-firebase.database().ref(userInfoRef).once('value').then(snap => {
+firebase.database().ref("userInfo").once('value').then(snap => {
     if(snap.val() !== null){
-        console.log(typeof snap.val())
-       return setUsers([...users,snap.val()])
+        console.log()
+       return setUsers([...users, snap.val()])
     }
 })
 }
 
-const mappedUsers = users.map(user => {
-    return (
-        <TableRow>
-            {user.name}
-        </TableRow>
-    )
+const mappedUsers = users.map((user,i,arr) => {
     
+    return Object.values(user).map(user => {
+        return (
+            <TableRow>
+                <TableHead>{user.name}</TableHead>
+                <TableHead>{user.email}</TableHead>
+            </TableRow>
+        )
+    })
 })
 
     return (
@@ -79,6 +80,7 @@ const mappedUsers = users.map(user => {
             <Table style={{ marginLeft: 15, width: "90%" }}>
                 <TableRow>
                     <TableHead>User</TableHead>
+                    <TableHead>User Email</TableHead>
                 </TableRow>
                 {mappedUsers}
             </Table>

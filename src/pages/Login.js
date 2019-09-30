@@ -3,7 +3,7 @@ import {GlobalStyle} from '../styles/GlobalStyle'
 import style from 'styled-components'
 import {scopeUser} from '../utils/scopeUser'
 import { withRouter } from 'react-router-dom'
-import firebase from 'firebase'
+import firebase from '../utils/Firebase'
 import format from 'date-format'
 
 export const Container = style.div`
